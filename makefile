@@ -1,2 +1,2 @@
 gendiff:
-	node bin/gendiff -h
+	node bin/gendiff

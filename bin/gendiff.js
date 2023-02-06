@@ -1,6 +1,7 @@
-import { program } from 'commander';
+import { Command } from 'commander';
+import genDiff from '../src';
 
-//const program = new Command();
+const program = new Command();
 
 program
     .description('Compares two configuration files and shows a difference.')
@@ -10,4 +11,4 @@ program
     .action((filepath1, filepath2, { format }) => {
         console.log(genDiff(filepath1, filepath2, format));
   });
-    program.parse();
+program.parse();
