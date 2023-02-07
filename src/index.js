@@ -7,28 +7,37 @@ const genDiff = (filepath1, filepath2, format) => {
     const parseData1 = JSON.parse(data1);
     const parseData2 = JSON.parse(data2);
 
-    const entries1 = Object.entries(parseData1);
-    const entries2 = Object.entries(parseData2);
-    const entries = _.union(entries1, entries2);
+    // const entries1 = Object.entries(parseData1);
+    // const entries2 = Object.entries(parseData2);
+    const keys1 = Object.keys(parseData1)
+    const keys2 = Object.keys(parseData2)
+    const keys = [...keys1, ...keys2];
+    console.log(keys)
+    const sortedKeys = _.sortBy(keys);
 
-    const resultAr = entries.reduce ((acc, [key, value]) => {
+    console.log(sortedKeys)
+
+    const resultAr = sortedKeys.reduce ((acc, key) => {
+        const value1 = parseData1[key];
+        const value2 = parseData2[key];
         if (Object.hasOwn(parseData1, key) && !Object.hasOwn(parseData2, key)) {
-            let resultString = `- ${key} : ${value}`;
+            let resultString = `- ${key} : ${value1}`;
             acc.push(resultString)
         } else if (!Object.hasOwn(parseData1, key) && Object.hasOwn(parseData2, key)) {
-            let resultString = `+ ${key} : ${value}`;
+            let resultString = `+ ${key} : ${value2}`;
             acc.push(resultString)
         } else if (Object.hasOwn(parseData1, key) && Object.hasOwn(parseData2, key) && parseData1[key] === parseData2[key]) {
-            let resultString = `  ${key} : ${value}`;
+            let resultString = `  ${key} : ${value1}`;
             acc.push(resultString)
         } else if (Object.hasOwn(parseData1, key) && Object.hasOwn(parseData2, key) && !_.isEqual(parseData1, parseData2)) {
-            const value1 = parseData1[key];
-            const value2 = parseData2[key];
-            if (value === value1) {
-                let resultString = `- ${key} : ${value}`;
+            const valueFile1 = parseData1[key];
+            const valueFile2 = parseData2[key];
+            console.log(valueFile1, valueFile2, value1, value2)
+            if (value1 === valueFile1 && value1 !== valueFile2) {
+                let resultString = `- ${key} : ${value1}`;
                 acc.push(resultString)
-            } else if (value === value2) {
-                let resultString = `+ ${key} : ${value}`;
+            } else if (value2 === valueFile2 && value2 !== valueFile1) {
+                let resultString = `+ ${key} : ${value2}`;
                 acc.push(resultString)
             }
         }
