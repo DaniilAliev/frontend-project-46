@@ -36,7 +36,8 @@ const genDiff = (filepath1, filepath2, format) => {
     }, [])
 
 
-    const result = _.uniq(resultAr);
+    const resultUnique = _.uniq(resultAr);
+    const result = `{\n${resultUnique.join('\n')}\n}`
     console.log(result);
 }
 
