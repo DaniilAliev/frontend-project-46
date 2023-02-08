@@ -1,2 +1,5 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/DaniilAliev/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/DaniilAliev/frontend-project-46/actions)
+
+### Local tests and linter status:
+[![Actions Status](https://github.com/DaniilAliev/frontend-project-46/workflows/main.yml/badge.svg)](https://github.com/DaniilAliev/frontend-project-46/actions)
