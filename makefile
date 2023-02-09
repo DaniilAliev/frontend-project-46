@@ -4,10 +4,10 @@ gendiff:
 install:
 	npm ci
 lint:
-	npx eslint --fix .
+	npx eslint .
 test:
-	npm test
+	node --experimental-vm-modules node_modules/jest/bin/jest.js
 test-coverage:
-	npm test -- --coverage --coverageProvider=v8
+	node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --coverageProvider=v8
 fix:
 	npx eslint . --fix
