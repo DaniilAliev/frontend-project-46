@@ -15,16 +15,16 @@ const genDiff = (filepath1, filepath2, format) => {
     const value1 = parseData1[key];
     const value2 = parseData2[key];
     if (Object.hasOwn(parseData1, key) && !Object.hasOwn(parseData2, key)) {
-      const resultString = `- ${key} : ${value1}`;
+      const resultString = `  - ${key}: ${value1}`;
       acc.push(resultString);
     } else if (!Object.hasOwn(parseData1, key) && Object.hasOwn(parseData2, key)) {
-      const resultString = `+ ${key} : ${value2}`;
+      const resultString = `  + ${key}: ${value2}`;
       acc.push(resultString);
     } else if (Object.hasOwn(parseData1, key) && Object.hasOwn(parseData2, key) && parseData1[key] === parseData2[key]) {
-      const resultString = `  ${key} : ${value1}`;
+      const resultString = `    ${key}: ${value1}`;
       acc.push(resultString);
     } else if (Object.hasOwn(parseData1, key) && Object.hasOwn(parseData2, key) && !_.isEqual(parseData1, parseData2)) {
-      const resultString = `- ${key} : ${value1}\n+ ${key} : ${value2}`;
+      const resultString = `  - ${key}: ${value1}\n  + ${key}: ${value2}`;
       acc.push(resultString);
     }
     return acc;
