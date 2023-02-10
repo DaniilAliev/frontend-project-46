@@ -1,5 +1,5 @@
-const stylish = (innerTree) => {
-  
-};
+const stylish = () =>{
+
+}
 
 export default stylish;
