@@ -1,11 +1,18 @@
 import { readFileSync } from 'fs';
+import path from 'path';
 import _ from 'lodash';
+import parseFile from './parses.js';
+
+const readFile = (filepath) => readFileSync(path.resolve(process.cwd(), filepath.trim()), 'utf-8');
+const readFormat = (filepath) => path.extname(filepath).slice(1);
 
 const genDiff = (filepath1, filepath2) => {
-  const data1 = readFileSync(filepath1, 'utf-8');
-  const data2 = readFileSync(filepath2, 'utf-8');
-  const parseData1 = JSON.parse(data1);
-  const parseData2 = JSON.parse(data2);
+  const data1 = readFile(filepath1);
+  const data2 = readFile(filepath2);
+  const format1 = readFormat(filepath1);
+  const format2 = readFormat(filepath2);
+  const parseData1 = parseFile(data1, format1);
+  const parseData2 = parseFile(data2, format2);
   const keys1 = Object.keys(parseData1);
   const keys2 = Object.keys(parseData2);
   const keys = [...keys1, ...keys2];
