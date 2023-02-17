@@ -1,4 +1,5 @@
 import stylish from './stylish.js';
+import plain from './plain.js';
 
 const format = (innerTree, formatName) => {
   switch (formatName) {
