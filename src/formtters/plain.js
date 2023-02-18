@@ -1,5 +1,7 @@
-const isComplexValue = (value) => {
+const stringify = (value) => {
   if (typeof value !== 'object' || value === null) {
+    return `'${value}'`;
+  } if (typeof value === 'boolean') {
     return value;
   }
   return '[complex value]';
@@ -11,20 +13,20 @@ const plain = (tree) => {
       const newAcc = acc.length > 0 ? `${acc}.${node.key}` : node.key;
       switch (node.status) {
         case 'added':
-          return `Property '${newAcc}' was added with value: ${isComplexValue(node.value)}`;
+          return `Property '${newAcc}' was added with value: ${stringify(node.value)}`;
         case 'deleted':
           return `Property '${newAcc}' was removed`;
         case 'unchanged':
           return null;
         case 'changed':
-          return `Property '${newAcc}' was updated. From '${node.value}' to '${node.value2}'`;
+          return `Property '${newAcc}' was updated. From ${stringify(node.value)} to ${stringify(node.value2)}`;
         case 'recursion':
           return iter(node.children, newAcc);
         default:
           return (`Unsupported node type: ${node.status}`);
       }
     });
-    return [...lines].join('\n');
+    return [...lines].filter((element) => element !== null).join('\n');
   };
   return iter(tree, 0);
 };

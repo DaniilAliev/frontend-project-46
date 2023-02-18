@@ -5,7 +5,6 @@ const buildTree = (parseData1, parseData2) => {
   const keys2 = Object.keys(parseData2);
   const keys = [...keys1, ...keys2];
   const sortedKeys = _.uniq(_.sortBy(keys));
-  // console.log(sortedKeys);
 
   return sortedKeys.map((key) => {
     const value1 = parseData1[key];
