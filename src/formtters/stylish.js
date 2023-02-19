@@ -1,6 +1,6 @@
 const replacer = ' ';
-const valueIndent = (depth) => (replacer.repeat(2 * depth + 2));
-const bracketIndent = (depth) => (replacer.repeat(2 * depth));
+const valueIndent = (depth) => (replacer.repeat(4 * depth + 2));
+const bracketIndent = (depth) => (replacer.repeat(4 * depth));
 
 const stringify = (value, depth) => {
   if (typeof value !== 'object' || value === null) {
