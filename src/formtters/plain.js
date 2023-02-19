@@ -1,8 +1,8 @@
 const stringify = (value) => {
-  if (typeof value !== 'object' || value === null) {
-    return `'${value}'`;
-  } if (typeof value === 'boolean') {
+  if (typeof value === 'boolean' || value === null) {
     return value;
+  } if (typeof value !== 'object') {
+    return `'${value}'`;
   }
   return '[complex value]';
 };
