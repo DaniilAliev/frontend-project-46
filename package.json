@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "The tool finds the difference between two json or yml files and prints the result in necessary format on demand.",
+  "description": "The tool which finds the difference between two json or yml files and prints the result in necessary format on demand.",
   "main": "index.js",
   "bin": {
     "gendiff": "bin/gendiff.js"
