@@ -19,11 +19,11 @@ const plain = (tree) => {
         case 'unchanged':
           return null;
         case 'changed':
-          return `Property '${newAcc}' was updated. From ${stringify(node.value)} to ${stringify(node.value2)}`;
-        case 'recursion':
+          return `Property '${newAcc}' was updated. From ${stringify(node.value1)} to ${stringify(node.value2)}`;
+        case 'nested':
           return iter(node.children, newAcc);
         default:
-          return (`Unsupported node type: ${node.status}`);
+          throw new Error(`Unsupported node type: ${node.status}`);
       }
     });
     return [...lines].filter((element) => element !== null).join('\n');

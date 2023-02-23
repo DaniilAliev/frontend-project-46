@@ -20,13 +20,13 @@ const stylish = (tree) => {
         case 'deleted':
           return `${valueIndent(depth)}- ${node.key}: ${stringify(node.value, depth + 1)}`;
         case 'changed':
-          return [`${valueIndent(depth)}- ${node.key}: ${stringify(node.value, depth + 1)}`, `${valueIndent(depth)}+ ${node.key}: ${stringify(node.value2, depth + 1)}`].join('\n');
+          return [`${valueIndent(depth)}- ${node.key}: ${stringify(node.value1, depth + 1)}`, `${valueIndent(depth)}+ ${node.key}: ${stringify(node.value2, depth + 1)}`].join('\n');
         case 'unchanged':
           return `${valueIndent(depth)}  ${node.key}: ${stringify(node.value, depth + 1)}`;
-        case 'recursion':
+        case 'nested':
           return `${valueIndent(depth)}  ${node.key}: ${iter(node.children, depth + 1)}`;
         default:
-          return (`Unsupported node type: ${node.status}`);
+          throw new Error(`Unsupported node type: ${node.status}`);
       }
     });
     return ['{', ...lines, `${bracketIndent(depth)}}`].join('\n');

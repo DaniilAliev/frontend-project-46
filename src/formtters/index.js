@@ -10,7 +10,7 @@ const format = (innerTree, formatName) => {
     case 'json':
       return JSON.stringify(innerTree);
     default:
-      return `Формат не поддерживается: ${format}`;
+      throw new Error(`Формат не поддерживается: ${format}`);
   }
 };
 export default format;

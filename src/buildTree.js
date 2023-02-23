@@ -9,17 +9,17 @@ const buildTree = (parseData1, parseData2) => {
   return sortedKeys.map((key) => {
     const value1 = parseData1[key];
     const value2 = parseData2[key];
-    if (_.has(parseData1, key) && !_.has(parseData2, key)) {
+    if (!_.has(parseData2, key)) {
       return { key, value: value1, status: 'deleted' };
     }
-    if (!_.has(parseData1, key) && _.has(parseData2, key)) {
+    if (!_.has(parseData1, key)) {
       return { key, value: value2, status: 'added' };
     }
     if (_.isObject(value1) && _.isObject(value2)) {
-      return { key, children: buildTree(value1, value2), status: 'recursion' };
+      return { key, children: buildTree(value1, value2), status: 'nested' };
     }
     return value1 === value2 ? { key, value: value1, status: 'unchanged' } : {
-      key, value: value1, value2, status: 'changed',
+      key, value1, value2, status: 'changed',
     };
   });
 };

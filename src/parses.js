@@ -6,8 +6,10 @@ const parseFile = (data, format) => {
       return JSON.parse(data);
     case 'yml':
       return yaml.load(data);
+    case 'yaml':
+      return yaml.load(data);
     default:
-      return 'Формат не поддерживается';
+      throw new Error('Формат не поддерживается');
   }
 };
 
