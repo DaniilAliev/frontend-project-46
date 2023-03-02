@@ -12,25 +12,25 @@ const stringify = (value) => {
 const plain = (tree) => {
   const iter = (data, acc) => {
     const lines = data.map((node) => {
-      const newAcc = acc.length > 0 ? [acc, node.key].join('.') : [node.key];
+      const path = [...acc, node.key].join('.');
       switch (node.status) {
         case 'added':
-          return `Property '${newAcc}' was added with value: ${stringify(node.value)}`;
+          return `Property '${path}' was added with value: ${stringify(node.value)}`;
         case 'deleted':
-          return `Property '${newAcc}' was removed`;
+          return `Property '${path}' was removed`;
         case 'unchanged':
           return null;
         case 'changed':
-          return `Property '${newAcc}' was updated. From ${stringify(node.value1)} to ${stringify(node.value2)}`;
+          return `Property '${path}' was updated. From ${stringify(node.value1)} to ${stringify(node.value2)}`;
         case 'nested':
-          return iter(node.children, newAcc);
+          return iter(node.children, [path]);
         default:
           throw new Error(`Unsupported node type: ${node.status}`);
       }
     });
     return [...lines].filter((element) => element !== null).join('\n');
   };
-  return iter(tree, '');
+  return iter(tree, []);
 };
 
 export default plain;
