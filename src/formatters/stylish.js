@@ -4,7 +4,7 @@ const bracketIndent = (depth) => (replacer.repeat(4 * depth));
 
 const stringify = (value, depth) => {
   if (typeof value !== 'object' || value === null) {
-    return value;
+    return String(value);
   }
   const lines = Object.keys(value)
     .map((key) => `${valueIndent(depth)}  ${key}: ${stringify(value[key], depth + 1)}`);

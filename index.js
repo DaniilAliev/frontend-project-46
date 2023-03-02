@@ -2,7 +2,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 import parseFile from './src/parses.js';
 import buildTree from './src/buildTree.js';
-import format from './src/formtters/index.js';
+import format from './src/formatters/index.js';
 
 const readFile = (filepath) => readFileSync(path.resolve(process.cwd(), filepath.trim()), 'utf-8');
 const readFormat = (filepath) => path.extname(filepath).slice(1);
