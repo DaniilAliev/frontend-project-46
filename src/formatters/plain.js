@@ -13,6 +13,7 @@ const plain = (tree) => {
   const iter = (data, acc) => {
     const lines = data.map((node) => {
       const newAcc = acc.length > 0 ? [acc, node.key].join('.') : [node.key];
+      acc.push(node.key);
       switch (node.status) {
         case 'added':
           return `Property '${newAcc}' was added with value: ${stringify(node.value)}`;
@@ -30,7 +31,7 @@ const plain = (tree) => {
     });
     return [...lines].filter((element) => element !== null).join('\n');
   };
-  return iter(tree, '');
+  return iter(tree, []);
 };
 
 export default plain;

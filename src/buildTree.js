@@ -7,19 +7,19 @@ const buildTree = (parseData1, parseData2) => {
   const sortedKeys = _.uniq(_.sortBy(keys));
 
   return sortedKeys.map((key) => {
-    const value1 = parseData1[key];
-    const value2 = parseData2[key];
+    // const value1 = parseData1[key];
+    // const value2 = parseData2[key];
     if (!_.has(parseData2, key)) {
-      return { key, value: value1, status: 'deleted' };
+      return { key, value: parseData1[key], status: 'deleted' };
     }
     if (!_.has(parseData1, key)) {
-      return { key, value: value2, status: 'added' };
+      return { key, value: parseData2[key], status: 'added' };
     }
-    if (_.isObject(value1) && _.isObject(value2)) {
-      return { key, children: buildTree(value1, value2), status: 'nested' };
+    if (_.isObject(parseData1[key]) && _.isObject(parseData2[key])) {
+      return { key, children: buildTree(parseData1[key], parseData2[key]), status: 'nested' };
     }
-    return value1 === value2 ? { key, value: value1, status: 'unchanged' } : {
-      key, value1, value2, status: 'changed',
+    return parseData1[key] === parseData2[key] ? { key, value: parseData1[key], status: 'unchanged' } : {
+      key, value1: parseData1[key], value2: parseData2[key], status: 'changed',
     };
   });
 };
