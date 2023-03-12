@@ -33,7 +33,9 @@ gendiff --help
 - gendiff --format [format] [filepath] [filepath]
 
 ## Screenshots:
-
-- ![Stylish output form (default)](/pictures/json%20stylish.jpg)
-- ![Plain output form](/pictures/yml%20plain.jpg)
-- ![JSON output form](/pictures/yml%20json.jpg)
+- Stylish output form (default):
+![Stylish output form (default)](/pictures/json%20stylish.jpg)
+- Plain output form:
+![Plain output form](/pictures/yml%20plain.jpg)
+- JSON output form
+![JSON output form](/pictures/yml%20json.jpg)
