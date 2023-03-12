@@ -34,6 +34,6 @@ gendiff --help
 
 ## Screenshots:
 
-- [Stylish output form (default)](/pictures/json%20stylish.jpg)
-- [Plain output form](/pictures/yml%20plain.jpg)
-- [JSON output form](/pictures/yml%20json.jpg)
+- ![Stylish output form (default)](/pictures/json%20stylish.jpg)
+- ![Plain output form](/pictures/yml%20plain.jpg)
+- ![JSON output form](/pictures/yml%20json.jpg)
