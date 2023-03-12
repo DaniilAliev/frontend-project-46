@@ -17,10 +17,12 @@ const getResultPlain = readFile('resultplain.txt');
 test.each(cases)('Compare files', (formatFile) => {
   const firstFile = getFixturePath(`file1.${formatFile}`);
   const secondFile = getFixturePath(`file2.${formatFile}`);
+
   const resultNoFormt = genDiff(firstFile, secondFile);
   const resultStylish = genDiff(firstFile, secondFile, 'stylish');
   const resultPlain = genDiff(firstFile, secondFile, 'plain');
   const data = genDiff(firstFile, secondFile, 'json');
+
   expect(resultNoFormt).toEqual(getResultStylish);
   expect(resultStylish).toEqual(getResultStylish);
   expect(resultPlain).toEqual(getResultPlain);
